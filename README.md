@@ -31,6 +31,7 @@ In **Dataset Analysis**, load the MAT file printed by the example, then load its
 
 - **Individual Cadavers** accepts processed specimen MAT files. This tab prepares a cohort dataset or spectra table for the analysis tab.
 - Dataset preparation starts with no specimen-specific exclusion list. Apply your study's quality-control criteria before analysis.
+- See [Pair and Save](GUI_GUIDE.md#pair-and-save-create-mat-dataset) to select acquisition tags, exclude specimens or spectra, and save the cohort.
 - **Dataset Analysis** accepts a generated cohort MAT file, spectra table, or saved LOCO results, depending on the analysis mode. Load a category workbook for category comparisons or T-score analyses. The synthetic workbook demonstrates the identifier and wrist DXA column names.
 - The app uses processed spectra. The synthetic example illustrates the file format and workflow. Its values are artificial and have no scientific or clinical interpretation.
 

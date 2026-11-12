@@ -15,6 +15,72 @@ Run `BoneSORS` from MATLAB to open the application.
 This tab intentionally contains no cohort-level ratios, prediction, or machine-learning
 analysis.
 
+### Pair and Save (Create MAT dataset)
+
+In **Individual Cadavers**, load the processed specimen MAT files for your
+cohort and select **Exposed only**, **Paired exposed/intact**, or **Intact only**.
+**Create MAT dataset** uses all loaded files. In paired mode, cadaver spectra
+must have both E and T measurements with the same specimen ID and acquisition
+tag. Intact-only records with IDs beginning with `IV` are also retained in
+paired mode.
+
+To change the filters, open [`app/pairAndSave.m`](app/pairAndSave.m) in the
+MATLAB Editor and edit the settings near the top. Save the file before clicking
+**Create MAT dataset**.
+
+#### Keep selected acquisition tags
+
+Set `allowTags` to the full base tags you want to keep across the cohort:
+
+```matlab
+allowTags = {'D2P1_MM00', 'D3P1_MM00'};
+```
+
+Copy the tag spelling and capitalization from the acquisition names. Omit the
+specimen ID, tissue marker, file extension, and any trailing repeat suffix
+such as `_r02`. The filter matches the base tag exactly, so
+`D2P1_MM00` also keeps repeats such as `D2P1_MM00_r02`. Set
+`allowTags = {};` to keep all tags eligible for the selected save mode.
+
+#### Exclude specimens or individual spectra
+
+For a manual exclusion list, set `filterSpectraSource = "manual";` and replace
+`manualFilterSpectra` with your study's entries. These IDs are fictitious:
+
+```matlab
+filterSpectraSource = "manual";
+manualFilterSpectra = {
+    'XX000001_T', {'D2P1'}
+    'XX000002',   {'D3P1_MM00'}
+    'XX000003',   {}
+};
+```
+
+- `XX000001_T` excludes intact spectra whose tags start with `D2P1`.
+  Append `_T` for intact tissue or `_E` for exposed bone. A bare ID applies
+  to both tissues.
+- `XX000002` excludes the exact tag `D3P1_MM00` for both tissues. An
+  exclusion tag containing an underscore is matched exactly, so list
+  `D3P1_MM00_r02` explicitly if you also need to exclude that repeat.
+- `XX000003` excludes all spectra for that specimen. With an empty tag list
+  and a tissue suffix, all spectra for that tissue are excluded.
+
+To use an Excel list, set `filterSpectraSource = "askFile";` and answer **Yes**
+when prompted. Enter the specimen ID in column A and one exclusion tag per
+cell in columns B onward. Leave those cells blank to exclude all spectra for
+that ID. Put all tags for a given ID or tissue-specific ID on one row. Set
+`filterSpectraSource = "none";` to turn off specimen-specific exclusions.
+
+In paired mode, excluding either side of a cadaver pair also removes its
+counterpart from the saved pair. A specimen with no surviving spectra can
+appear as an empty record when `allowTags` is empty. Check the specimen
+and spectrum counts before analysis.
+
+Choose an output location when prompted. The GUI saves the dataset as
+`cads` in the MAT file and writes `pairAndSave_settings.tex` beside it by
+default. Use a separate output folder per run to keep each settings report
+with its dataset.
+
 ### Tab 2: Dataset Analysis
 
 1. Load one generated MAT dataset. This state is separate from the individual files in
