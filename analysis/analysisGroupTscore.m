@@ -1,0 +1,26 @@
+function analysisGroupTscore(context)
+%ANALYSISGROUPTSCORE Run one independent T-score analysis per selected tag.
+
+if ~context.settings.feature.useRaman
+    error('MainGUI:GroupTscoreRequiresRaman', [ ...
+        'Tag group T-score analysis requires Raman predictors so that tags define ', ...
+        'distinct analyses. Configure the predictor source as Raman only or ', ...
+        'Raman + demographics.']);
+end
+if isempty(context.options.tags)
+    error('MainGUI:GroupTscoreTagsRequired', ...
+        'Select at least one priority tag for Tag group T-score analysis.');
+end
+
+summaryTable = localComputeGroupTscoreTable(context);
+
+fprintf('\n=== Tag group T-score analysis (independent tags) ===\n');
+fprintf(['Each selected tag is evaluated separately. No priority fallback is ', ...
+    'used between tags.\n']);
+fprintf('Tissue: %s   Spectrum expression: %s\n', ...
+    char(context.options.tissue), char(context.options.spectrumExpression));
+fprintf('Normalization: %s (%s)\n', ...
+    char(string(context.settings.feature.normalizationRegion)), ...
+    char(string(context.settings.feature.normalizationMethod)));
+disp(summaryTable);
+end

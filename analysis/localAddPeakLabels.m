@@ -1,0 +1,26 @@
+function localAddPeakLabels(ax, wn, labelFontSize)
+    if nargin < 3 || isempty(labelFontSize)
+        labelFontSize = 30;
+    end
+
+    yl = ylim(ax);
+    yTop = yl(1) + 0.95 * diff(yl);
+    yMid = yl(1) + 0.70 * diff(yl);
+    yLow = yl(1) + 0.45 * diff(yl);
+    xPos = @(v) wn(interp1(wn, 1:numel(wn), v, 'nearest', 'extrap'));
+
+    text(ax, xPos(1005), yTop, 'PO_4^{3-}', ...
+        'HorizontalAlignment','center', 'FontSize',labelFontSize, 'Color',[0.35 0.35 0.35], ...
+        'Interpreter','tex');
+    text(ax, xPos(1445), yMid, 'CH_2', ...
+        'HorizontalAlignment','center', 'FontSize',labelFontSize, 'Color',[0.35 0.35 0.35], ...
+        'Interpreter','tex');
+    text(ax, xPos(1070), yLow, 'CO_3^{2-}', ...
+        'HorizontalAlignment','center', 'FontSize',labelFontSize, 'Color',[0.35 0.35 0.35], ...
+        'Interpreter','tex');
+    text(ax, xPos(1260), yLow, 'Amide III', ...
+        'HorizontalAlignment','center', 'FontSize',labelFontSize, 'Color',[0.35 0.35 0.35]);
+    text(ax, xPos(1660), yLow, 'Amide I', ...
+        'HorizontalAlignment','center', 'FontSize',labelFontSize, 'Color',[0.35 0.35 0.35]);
+end
+

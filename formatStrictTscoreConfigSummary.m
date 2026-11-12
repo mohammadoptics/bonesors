@@ -1,0 +1,6 @@
+function text = formatStrictTscoreConfigSummary(c)
+c=validateStrictTscoreConfiguration(c);
+text=sprintf('Reconstruction: %s, %d components | %s / %s | E: %s | P: %s\nFixed settings; grouped outer LOCO. Scaling ddof=%d; RBF width convention: %s.', ...
+    c.plsAlgorithm,c.reconNComponents,c.reconNormalizationRegion,c.reconNormalizationMethod, ...
+    c.measuredTscoreModel,c.tscoreModel,c.scalingDDOF,c.svrKernelConvention);
+end

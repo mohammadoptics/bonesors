@@ -1,0 +1,23 @@
+function validateSpectrumCombinationSettings(options, featureSettings)
+%VALIDATESPECTRUMCOMBINATIONSETTINGS Require normalization except explicit display modes.
+
+if ~isfield(options, 'spectrumCombineMode') || ...
+        any(lower(string(options.spectrumCombineMode)) == ["single","separate"])
+    return
+end
+
+% None is an explicit display choice, not a change to T-score model rules.
+if isfield(options, 'mode') && ...
+        any(string(options.mode) == ["displayRatios","displayFWHM","compareRatioPlots","categoryAverageSpectra"]) && ...
+        isfield(featureSettings, 'normalizationRegion') && ...
+        strcmpi(string(featureSettings.normalizationRegion), "none")
+    return
+end
+
+if ~isfield(featureSettings, 'normalizationRegion') || ...
+        strcmpi(string(featureSettings.normalizationRegion), "none")
+    error('MainGUI:SpectrumCombinationRequiresNormalization', [ ...
+        'Multiple spectrum columns must be normalized before they are combined. ', ...
+        'Choose PO4, CO3, CH2, Amide I, Amide III, or Full Spectrum normalization.']);
+end
+end

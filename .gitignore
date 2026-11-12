@@ -1,0 +1,18 @@
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# MATLAB and local generated files
+*.asv
+*.mex*
+*.fig
+*.log
+*.mat
+!tests/fixtures/sklearn_nipals_reference.mat
+*.xlsx
+*.xls
+*.csv
+results/
+output/
