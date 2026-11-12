@@ -1,5 +1,5 @@
 function config = guiDefaultConfig()
-%GUIDEFAULTCONFIG Central defaults for GUI_Ver2.
+%GUIDEFAULTCONFIG Central defaults for BoneSORS.
 % Keep user-facing defaults here instead of scattering flags across callbacks.
 
 config.schemaVersion = 2;

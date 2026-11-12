@@ -86,7 +86,7 @@ c.figureIncludeConcatenatedRaman=false; c.figureIncludeConcatenatedCombined=fals
 verifyError(t,@()validateTscoreConfiguration(c),'MainGUI:TscorePublication');
 end
 function testMainGuiLocationControls(t)
-BoneSORS; f=findobj(groot,'Tag','MainGUI_Ver2'); clean=onCleanup(@()delete(f));
+BoneSORS; f=findobj(groot,'Tag','BoneSORS'); clean=onCleanup(@()delete(f));
 h=f.UserData.controls; modes=analysisModeRegistry();
 h.modePopup.Value=find(string({modes.value})=="predictTscore"); cb=h.modePopup.Callback; cb(h.modePopup,[]);
 h.locationCombinePopup.Value=2; cb=h.locationCombinePopup.Callback; cb(h.locationCombinePopup,[]);

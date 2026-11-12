@@ -11,7 +11,7 @@ windowHeight = min(920, max(760, screenSize(4) - 120));
 
 fig = figure('Name', 'BoneSORS', 'NumberTitle', 'off', ...
     'Color', [0.96 0.97 0.98], 'Position', [40 50 windowWidth windowHeight], ...
-    'Resize', 'on', 'WindowStyle', 'normal', 'Tag', 'MainGUI_Ver2');
+    'Resize', 'on', 'WindowStyle', 'normal', 'Tag', 'BoneSORS');
 
 ud = struct();
 ud.statusMap = containers.Map();

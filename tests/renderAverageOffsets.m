@@ -6,7 +6,7 @@ if ~isfolder(outputFolder), mkdir(outputFolder); end
 before=findall(groot,'Type','figure');
 cleanup=onCleanup(@()delete(setdiff(findall(groot,'Type','figure'),before)));
 BoneSORS;
-f=findobj(groot,'Tag','MainGUI_Ver2'); f=f(1);
+f=findobj(groot,'Tag','BoneSORS'); f=f(1);
 registry=analysisModeRegistry(); controls=f.UserData.controls;
 set(controls.modePopup,'Value',find(strcmp({registry.value},'compareAverageSpectra')));
 feval(controls.modePopup.Callback,controls.modePopup,[]);

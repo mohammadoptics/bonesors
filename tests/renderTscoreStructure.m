@@ -2,7 +2,7 @@ function renderTscoreStructure(output)
 % Visual QA of the UI without loading or changing the user's MATLAB session.
 old=get(groot,'DefaultFigureVisible'); clean=onCleanup(@()set(groot,'DefaultFigureVisible',old));
 set(groot,'DefaultFigureVisible','off'); BoneSORS;
-f=findobj(groot,'Tag','MainGUI_Ver2'); closeMain=onCleanup(@()delete(f));
+f=findobj(groot,'Tag','BoneSORS'); closeMain=onCleanup(@()delete(f));
 h=f.UserData.controls; modes=analysisModeRegistry();
 h.modePopup.Value=find(string({modes.value})=="predictTscore"); cb=h.modePopup.Callback; cb(h.modePopup,[]);
 h.locationCombinePopup.Value=2; cb=h.locationCombinePopup.Callback; cb(h.locationCombinePopup,[]);
