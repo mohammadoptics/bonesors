@@ -5,7 +5,7 @@ end
 function setupOnce(testCase)
 testCase.TestData.OriginalPath = path;
 root = fileparts(fileparts(mfilename('fullpath')));
-addpath(root, fullfile(root,'analysis'));
+addpath(root, fullfile(root,'app'), fullfile(root,'app','analysis'));
 end
 
 function teardownOnce(testCase)
@@ -25,7 +25,7 @@ end
 
 function testGUIControlVisibilityAndSharedSelection(testCase)
 existing = findall(groot,'Type','figure');
-GUI_Ver2;
+BoneSORS;
 created = setdiff(findall(groot,'Type','figure'),existing);
 cleanup = onCleanup(@()delete(created)); %#ok<NASGU>
 verifyNumElements(testCase,created,1);

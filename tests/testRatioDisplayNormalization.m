@@ -5,7 +5,7 @@ end
 function setupOnce(testCase)
 rootFolder = fileparts(fileparts(mfilename('fullpath')));
 testCase.TestData.OriginalPath = path;
-addpath(rootFolder, fullfile(rootFolder, 'analysis'));
+addpath(rootFolder, fullfile(rootFolder,'app'), fullfile(rootFolder,'app','analysis'));
 end
 
 function teardownOnce(testCase)
@@ -77,7 +77,7 @@ end
 
 function testGUIControlVisibility(testCase)
 existing = findall(groot, 'Type', 'figure');
-GUI_Ver2;
+BoneSORS;
 created = setdiff(findall(groot, 'Type', 'figure'), existing);
 cleanup = onCleanup(@()delete(created)); %#ok<NASGU>
 verifyNumElements(testCase, created, 1);

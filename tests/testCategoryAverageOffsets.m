@@ -4,7 +4,7 @@ end
 function setupOnce(t)
 t.TestData.oldPath=path;
 root=fileparts(fileparts(mfilename('fullpath')));
-addpath(root,fullfile(root,'analysis'),fullfile(root,'tests'));
+addpath(root, fullfile(root,'app'), fullfile(root,'app','analysis'),fullfile(root,'tests'));
 t.TestData.visibility=get(groot,'DefaultFigureVisible');
 set(groot,'DefaultFigureVisible','off');
 end
@@ -58,7 +58,7 @@ end
 end
 function testGUIComparisonRowIsOptional(t)
 before=findall(groot,'Type','figure'); clean=onCleanup(@()delete(setdiff(findall(groot,'Type','figure'),before)));
-GUI_Ver2; f=setdiff(findall(groot,'Type','figure'),before); c=f.UserData.controls;
+BoneSORS; f=setdiff(findall(groot,'Type','figure'),before); c=f.UserData.controls;
 registry=analysisModeRegistry(); c.modePopup.Value=find(strcmp({registry.value},'categoryAverageSpectra'));
 feval(c.modePopup.Callback,c.modePopup,[]);
 verifyEqual(t,string(c.categoryComparisonCheck.Visible),"on"); verifyEqual(t,string(c.comparisonTissuePopup.Enable),"off");

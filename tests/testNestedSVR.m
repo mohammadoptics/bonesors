@@ -5,8 +5,8 @@ end
 function setupOnce(testCase)
 rootFolder = fileparts(fileparts(mfilename('fullpath')));
 testCase.TestData.OriginalPath = path;
-addpath(rootFolder);
-addpath(fullfile(rootFolder,'analysis'));
+addpath(rootFolder, fullfile(rootFolder,'app'));
+addpath(fullfile(rootFolder,'app','analysis'));
 end
 
 function teardownOnce(testCase)

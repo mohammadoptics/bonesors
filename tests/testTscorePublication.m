@@ -2,7 +2,7 @@ function tests=testTscorePublication
 tests=functiontests(localfunctions);
 end
 function setupOnce(t)
-t.TestData.old=path; root=fileparts(fileparts(mfilename('fullpath'))); addpath(root,fullfile(root,'analysis'));
+t.TestData.old=path; root=fileparts(fileparts(mfilename('fullpath'))); addpath(root, fullfile(root,'app'), fullfile(root,'app','analysis'));
 end
 function teardownOnce(t), path(t.TestData.old); end
 function testDialogPresetAndRoundTrip(t)

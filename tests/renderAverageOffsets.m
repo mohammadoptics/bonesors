@@ -1,11 +1,11 @@
 function renderAverageOffsets(outputFolder)
 %RENDERAVERAGEOFFSETS Synthetic visual smoke test (not scientific results).
 root=fileparts(fileparts(mfilename('fullpath')));
-addpath(root,fullfile(root,'analysis'));
+addpath(root, fullfile(root,'app'), fullfile(root,'app','analysis'));
 if ~isfolder(outputFolder), mkdir(outputFolder); end
 before=findall(groot,'Type','figure');
 cleanup=onCleanup(@()delete(setdiff(findall(groot,'Type','figure'),before)));
-GUI_Ver2;
+BoneSORS;
 f=findobj(groot,'Tag','MainGUI_Ver2'); f=f(1);
 registry=analysisModeRegistry(); controls=f.UserData.controls;
 set(controls.modePopup,'Value',find(strcmp({registry.value},'compareAverageSpectra')));

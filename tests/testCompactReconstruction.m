@@ -3,7 +3,8 @@ tests=functiontests(localfunctions);
 end
 function setupOnce(t)
 t.TestData.oldPath=path;
-addpath(fileparts(fileparts(mfilename('fullpath'))));
+root = fileparts(fileparts(mfilename('fullpath')));
+addpath(root, fullfile(root,'app'));
 end
 function teardownOnce(t)
 path(t.TestData.oldPath);

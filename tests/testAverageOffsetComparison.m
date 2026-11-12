@@ -4,7 +4,7 @@ end
 function setupOnce(t)
 t.TestData.oldPath=path;
 root=fileparts(fileparts(mfilename('fullpath')));
-addpath(root,fullfile(root,'analysis'));
+addpath(root, fullfile(root,'app'), fullfile(root,'app','analysis'));
 t.TestData.visibility=get(groot,'DefaultFigureVisible');
 set(groot,'DefaultFigureVisible','off');
 end

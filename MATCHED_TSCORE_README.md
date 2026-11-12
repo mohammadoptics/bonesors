@@ -2,7 +2,7 @@
 
 ## Run in the GUI
 
-1. Reopen `GUI_Ver2` to refresh its callbacks after this update.
+1. Reopen `BoneSORS` to refresh its callbacks after this update.
 2. Load the original `Analysis/pairedCadavers.mat` and `Analysis/CompleteCadaverWorkbook.xlsx`. Do not load a reconstructed `predictedCadavers.mat` for this direct-intact comparison.
 3. Choose an analysis output directory.
 4. Select **Predict T-score**, tissue T, expression `3`, and exact tag D3P1_MM00 on Analysis. In **Configure T-score prediction**, explicitly set the predictors, preprocessing, models, and validation values documented below, then **Apply**. Preset buttons were removed on 24 September 2026.
@@ -35,7 +35,7 @@ Matched SVR deliberately uses **scikit-learn from the MATLAB GUI**, not `fitrsvm
 
 SVR uses `gamma = 1/(2*sigma^2)`, epsilon-insensitive loss, tolerance 0.001, and shrinking enabled. MATLAB's Gaussian kernel-scale convention differs; copying the same numeric scale into the legacy `fitrsvm` mode does not reproduce this setup. Documentation: [scikit-learn SVR](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html), [MATLAB fitrsvm](https://www.mathworks.com/help/stats/fitrsvm.html).
 
-The **SVR Python** executable field on the Validation tab is configurable. Use a Python 3.12 environment, install `analysis/requirements_matched_svr.txt`, and set that executable path. No Python environment is needed for PLS or the original native MATLAB SVR mode.
+The **SVR Python** executable field on the Validation tab is configurable. Use a Python 3.12 environment, install `app/analysis/requirements_matched_svr.txt`, and set that executable path. No Python environment is needed for PLS or the original native MATLAB SVR mode.
 
 ## Saved results
 

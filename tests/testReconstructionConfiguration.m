@@ -4,7 +4,7 @@ end
 function setupOnce(t)
 t.TestData.OriginalPath=path;
 root=fileparts(fileparts(mfilename('fullpath')));
-addpath(root,fullfile(root,'analysis'));
+addpath(root, fullfile(root,'app'), fullfile(root,'app','analysis'));
 end
 function teardownOnce(t)
 path(t.TestData.OriginalPath);
@@ -154,7 +154,7 @@ ud.config.analysisOutputDirectory=folder; f.UserData=ud;
 verifyError(t,@()runReconstructionAnalysis(f),'MainGUI:ReconstructionOutputExists');
 end
 function testReconstructionControlsVisible(t)
-existing=findall(groot,'Type','figure'); GUI_Ver2;
+existing=findall(groot,'Type','figure'); BoneSORS;
 created=setdiff(findall(groot,'Type','figure'),existing);
 cleanup=onCleanup(@()delete(created)); %#ok<NASGU>
 f=created(1); h=f.UserData.controls; registry=analysisModeRegistry();

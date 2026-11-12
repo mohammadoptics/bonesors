@@ -2,7 +2,7 @@ function tests=testFlexibleTscoreFigure
 tests=functiontests(localfunctions);
 end
 function setupOnce(t)
-t.TestData.old=path; p=fileparts(fileparts(mfilename('fullpath'))); addpath(p,fullfile(p,'analysis'));
+t.TestData.old=path; p=fileparts(fileparts(mfilename('fullpath'))); addpath(p, fullfile(p,'app'), fullfile(p,'app','analysis'));
 t.TestData.visible=get(groot,'DefaultFigureVisible'); set(groot,'DefaultFigureVisible','off');
 end
 function teardownOnce(t), path(t.TestData.old); set(groot,'DefaultFigureVisible',t.TestData.visible); end
@@ -86,7 +86,7 @@ c.figureIncludeConcatenatedRaman=false; c.figureIncludeConcatenatedCombined=fals
 verifyError(t,@()validateTscoreConfiguration(c),'MainGUI:TscorePublication');
 end
 function testMainGuiLocationControls(t)
-GUI_Ver2; f=findobj(groot,'Tag','MainGUI_Ver2'); clean=onCleanup(@()delete(f));
+BoneSORS; f=findobj(groot,'Tag','MainGUI_Ver2'); clean=onCleanup(@()delete(f));
 h=f.UserData.controls; modes=analysisModeRegistry();
 h.modePopup.Value=find(string({modes.value})=="predictTscore"); cb=h.modePopup.Callback; cb(h.modePopup,[]);
 h.locationCombinePopup.Value=2; cb=h.locationCombinePopup.Callback; cb(h.locationCombinePopup,[]);

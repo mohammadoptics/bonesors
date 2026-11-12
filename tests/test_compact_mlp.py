@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 from scipy.optimize import check_grad
 from threadpoolctl import threadpool_limits
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "app"))
 from compact_mlp_reconstruct import neural_objective, reconstruct
 
 

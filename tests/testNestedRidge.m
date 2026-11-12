@@ -3,7 +3,7 @@ tests=functiontests(localfunctions);
 end
 function setupOnce(t)
 t.TestData.OldPath=path;
-root=fileparts(fileparts(mfilename('fullpath'))); addpath(root,fullfile(root,'analysis'));
+root=fileparts(fileparts(mfilename('fullpath'))); addpath(root, fullfile(root,'app'), fullfile(root,'app','analysis'));
 end
 function teardownOnce(t), path(t.TestData.OldPath); end
 function testNumpyPermutationAndNoGlobalRandomSideEffect(t)

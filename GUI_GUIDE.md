@@ -1,6 +1,6 @@
-# MainGUI_Ver2 architecture
+# BoneSORS GUI guide
 
-Run `GUI_Ver2` from MATLAB to open the application.
+Run `BoneSORS` from MATLAB to open the application.
 
 ## Two-stage workflow
 
@@ -96,7 +96,7 @@ Exact matching is the safe default. Prefix matching supports deliberate groups s
 
 ## Main modules
 
-- `GUI_Ver2.m`: layout and thin user-action callbacks.
+- `BoneSORS.m`: layout and thin user-action callbacks.
 - `loadAnalysisDataset.m`: separate generated-dataset loader and type detection.
 - `runSelectedAnalysis.m`: the only analysis-button dispatcher.
 - `runReconstructionAnalysis.m`: common entry point for PLS, MLP, and kernel-ridge
@@ -115,12 +115,12 @@ Exact matching is the safe default. Prefix matching supports deliberate groups s
   scientific calculations.
 - `analyzePairedCadavers.m`: a compatibility wrapper retained for older scripts;
   the GUI no longer calls it.
-- `analysis/analysis<Name>.m`: one entry module for each selectable cadaver-dataset
+- `app/analysis/analysis<Name>.m`: one entry module for each selectable cadaver-dataset
   analysis.
-- `analysis/buildAnalysisContext.m`, `analysis/collectRecords.m`, and
-  `analysis/analysisDefaultSettings.m`: shared validated inputs and scientific
+- `app/analysis/buildAnalysisContext.m`, `app/analysis/collectRecords.m`, and
+  `app/analysis/analysisDefaultSettings.m`: shared validated inputs and scientific
   defaults.
-- Other files under `analysis/`: focused calculation, plotting, and validation
+- Other files under `app/analysis/`: focused calculation, plotting, and validation
   helpers extracted from the former monolithic analysis function.
 
 The obsolete `splitSpectraFlag` and its category-row-dependent spectrum switching have
@@ -320,8 +320,8 @@ exploratory if their settings were chosen after inspecting this cohort's results
 ## Adding an analysis module
 
 1. Add its display label and internal value to `analysisModeRegistry.m`.
-2. Create one `analysis/analysis<Name>.m` entry module.
-3. Put scientific defaults in `analysis/analysisDefaultSettings.m`; put GUI defaults
+2. Create one `app/analysis/analysis<Name>.m` entry module.
+3. Put scientific defaults in `app/analysis/analysisDefaultSettings.m`; put GUI defaults
    in `guiDefaultConfig.m`.
 4. Add one dispatch case to `runCadaverDatasetAnalysis.m`. Keep calculations out of
    the dispatcher.

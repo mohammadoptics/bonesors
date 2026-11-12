@@ -2,7 +2,8 @@ function tests=testAnalysisOutputDirectory
 tests=functiontests(localfunctions);
 end
 function setupOnce(t)
-t.TestData.old=path; addpath(fileparts(fileparts(mfilename('fullpath'))));
+t.TestData.old=path; root = fileparts(fileparts(mfilename('fullpath')));
+addpath(root, fullfile(root,'app'));
 end
 function teardownOnce(t), path(t.TestData.old); end
 function testExistingFolderNeverPrompts(t)

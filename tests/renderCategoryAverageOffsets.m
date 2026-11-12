@@ -1,6 +1,6 @@
 function renderCategoryAverageOffsets(outputFolder)
 root=fileparts(fileparts(mfilename('fullpath')));
-addpath(root,fullfile(root,'analysis'),fullfile(root,'tests'));
+addpath(root, fullfile(root,'app'), fullfile(root,'app','analysis'),fullfile(root,'tests'));
 if ~isfolder(outputFolder), mkdir(outputFolder); end
 before=findall(groot,'Type','figure');
 clean=onCleanup(@()delete(setdiff(findall(groot,'Type','figure'),before)));

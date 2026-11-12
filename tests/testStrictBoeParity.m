@@ -3,7 +3,7 @@ tests=functiontests(localfunctions);
 end
 function setupOnce(t)
 t.TestData.OriginalPath=path;
-root=fileparts(fileparts(mfilename('fullpath')));addpath(root,fullfile(root,'analysis'));
+root=fileparts(fileparts(mfilename('fullpath')));addpath(root, fullfile(root,'app'), fullfile(root,'app','analysis'));
 end
 function teardownOnce(t),path(t.TestData.OriginalPath);end
 function testHistoricalDefaultsAreExplicit(t)
@@ -22,7 +22,7 @@ bad=c;bad.intactSpectraToUse=[1 2 3];verifyError(t,@()validateStrictTscoreConfig
 end
 function testDedicatedGUIControlsAndApply(t)
 before=findall(groot,'Type','figure');cleanup=onCleanup(@()delete(setdiff(findall(groot,'Type','figure'),before))); %#ok<NASGU>
-GUI_Ver2;f=setdiff(findall(groot,'Type','figure'),before);f=f(1);
+BoneSORS;f=setdiff(findall(groot,'Type','figure'),before);f=f(1);
 controls=f.UserData.controls;modes=analysisModeRegistry();
 controls.modePopup.Value=find(strcmp({modes.value},'strictPredictTscore'));
 cb=controls.modePopup.Callback;cb(controls.modePopup,[]);

@@ -2,7 +2,7 @@
 
 ## Reproduce the exploratory Python result
 
-1. Close and reopen `GUI_Ver2` from this MainGUI_Ver2 folder.
+1. Close and reopen `BoneSORS` from the repository folder.
 2. In the Analysis tab, load `Analysis/pairedCadavers.mat` and select `Analysis/CompleteCadaverWorkbook.xlsx` as the category/demographic sheet. These are the inputs used for the validated 38-donor run. Loading different donors, metadata, spectra, or donor order can change the result.
 3. Select **Predict T-score**, then **Configure T-score prediction**.
 4. Select intact tissue T, expression `3` (6 mm), and exact tag D3P1_MM00 on Analysis. Configure Raman + demographics, all five selected ratios, age/BMI/weight (not sex), normalization none, standardization and block scaling on, and Ridge only. Set alpha grid `[0.01, 0.1, 1, 10, 100]`, five ridge inner folds, and seed `20260919`. Preset buttons were removed on 24 September 2026.

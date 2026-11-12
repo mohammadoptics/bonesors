@@ -2,7 +2,7 @@ function tests=testTscoreLocationFusion
 tests=functiontests(localfunctions);
 end
 function setupOnce(t)
-t.TestData.old=path; p=fileparts(fileparts(mfilename('fullpath'))); addpath(p,fullfile(p,'analysis'));
+t.TestData.old=path; p=fileparts(fileparts(mfilename('fullpath'))); addpath(p, fullfile(p,'app'), fullfile(p,'app','analysis'));
 end
 function teardownOnce(t), path(t.TestData.old); end
 function testFeatureOrderAndIncompleteDonors(t)
